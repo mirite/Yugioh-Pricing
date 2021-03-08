@@ -46,8 +46,6 @@ for card in cards:
         content.update(content['price_data']['data']['prices'])
         output.append(content)
 
-        break
-
     except Exception as e:
         print(e)
 
