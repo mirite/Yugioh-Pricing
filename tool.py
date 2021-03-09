@@ -37,6 +37,7 @@ for card in cards:
         x = x + 1
 
         url = endpointBase + card['Code']
+        qty = int(card['Number'])
 
         response = requests.get(url)
         jsonResponse = json.loads(response.content)
@@ -45,7 +46,9 @@ for card in cards:
         content['card_name'] = content['name']
         content.update(content['price_data'])
         content.update(content['price_data']['data']['prices'])
-        output.append(content)
+
+        for n in range(qty):
+            output.append(content)
 
     except Exception as e:
         print(e)
