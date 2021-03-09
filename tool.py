@@ -42,6 +42,7 @@ for card in cards:
         jsonResponse = json.loads(response.content)
 
         content = jsonResponse['data']
+        content['card_name'] = content['name']
         content.update(content['price_data'])
         content.update(content['price_data']['data']['prices'])
         output.append(content)
@@ -50,5 +51,5 @@ for card in cards:
         print(e)
 
 
-headers = ["print_tag","name","card_type","family","type","rarity","high","low","average","shift","shift_3","shift_7","shift_21","shift_30","shift_90","shift_180","shift_365","updated_at"]
+headers = ["print_tag","card_name","card_type","family","type","name","rarity","high","low","average","shift","shift_3","shift_7","shift_21","shift_30","shift_90","shift_180","shift_365","updated_at"]
 write_csv_log(output,headers,"output")
